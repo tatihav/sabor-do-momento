@@ -1,50 +1,49 @@
-# TÍTULO DO PROJETO
+# 🍽️ Sabor do Momento
 
-`CURSO`
+Projeto desenvolvido como parte do curso de Sistemas para Internet da PUC Minas — 3º semestre (2025.1).
 
-`DISCIPLINA`
+O **Sabor do Momento** é uma aplicação web para gerenciamento de receitas culinárias. O sistema permite o cadastro, visualização e exclusão de receitas, com suporte a categorias alimentares e preferências do usuário.
 
-`SEMESTRE`
+---
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+## 📌 Funcionalidades
 
-## Integrantes
+- Cadastro e login de usuários
+- Cadastro de receitas com imagens, ingredientes e modo de preparo
+- Classificação por categoria (café da manhã, almoço, lanche, etc.)
+- Filtros por tipo de receita, como *fitness* ou *vegana*
+- Edição de perfil com preferências
+- Armazenamento em banco de dados relacional
+---
 
-* Rodrigo da Costa Souza
-* Tatiana Haveroth Barbosa
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+## 🛠️ Tecnologias Utilizadas
 
-## Orientador
+- **C# com ASP.NET MVC**
+- **Entity Framework Core**
+- **SQL Server**
+- **HTML5**, **CSS3** e **JavaScript**
+- **Razor Pages**
+- **Bootstrap 5**
 
-* Will Ricardo dos Santos Machado
+---
 
-## Instruções de utilização
+## 🗂️ Estrutura do Projeto
 
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
+- `src/` – Código-fonte do sistema
+  - `mvc/Controllers` – Controladores MVC
+  - `mvc/Models` – Entidades e modelos de domínio
+  - `mvc/Migrations` – Scripts de migração EF
+- `docs/` – Documentação do projeto (contexto, requisitos, testes, etc.)
+- `presentation/` – Recursos de apresentação do trabalho (slides, imagens)
 
-# Documentação
+---
 
-<ol>
-<li><a href="docs/01-Documentação de Contexto.md"> Documentação de Contexto</a></li>
-<li><a href="docs/02-Especificação do Projeto.md"> Especificação do Projeto</a></li>
-<li><a href="docs/03-Metodologia.md"> Metodologia</a></li>
-<li><a href="docs/04-Projeto de Interface.md"> Projeto de Interface</a></li>
-<li><a href="docs/05-Arquitetura da Solução.md"> Arquitetura da Solução</a></li>
-<li><a href="docs/06-Template Padrão da Aplicação.md"> Template Padrão da Aplicação</a></li>
-<li><a href="docs/07-Programação de Funcionalidades.md"> Programação de Funcionalidades</a></li>
-<li><a href="docs/08-Plano de Testes de Software.md"> Plano de Testes de Software</a></li>
-<li><a href="docs/09-Registro de Testes de Software.md"> Registro de Testes de Software</a></li>
-<li><a href="docs/10-Plano de Testes de Usabilidade.md"> Plano de Testes de Usabilidade</a></li>
-<li><a href="docs/11-Registro de Testes de Usabilidade.md"> Registro de Testes de Usabilidade</a></li>
-<li><a href="docs/12-Apresentação do Projeto.md"> Apresentação do Projeto</a></li>
-<li><a href="docs/13-Referências.md"> Referências</a></li>
-</ol>
 
-# Código
+## 👩‍💻 Desenvolvimento
 
-<li><a href="src/README.md"> Código Fonte</a></li>
+- Tatiana Haveroth Barbosa  
+[GitHub](https://github.com/tatihav) | [LinkedIn](https://linkedin.com/in/tatihav)  
 
-# Apresentação
+- Rodrigo da Costa Souza
 
-<li><a href="presentation/README.md"> Apresentação da solução</a></li>
+---
