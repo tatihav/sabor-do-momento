@@ -1,0 +1,202 @@
+﻿[
+    {
+        "Id": 1,
+        "UsuarioId": 1,
+        "ReceitaId": 1
+    },
+    {
+        "Id": 2,
+        "UsuarioId": 2,
+        "ReceitaId": 1
+    },
+    {
+        "Id": 3,
+        "UsuarioId": 3,
+        "ReceitaId": 1
+    },
+    {
+        "Id": 4,
+        "UsuarioId": 4,
+        "ReceitaId": 1
+    },
+    {
+        "Id": 5,
+        "UsuarioId": 5,
+        "ReceitaId": 1
+    },
+    {
+        "Id": 6,
+        "UsuarioId": 6,
+        "ReceitaId": 1
+    },
+    {
+        "Id": 7,
+        "UsuarioId": 7,
+        "ReceitaId": 1
+    },
+    {
+        "Id": 8,
+        "UsuarioId": 8,
+        "ReceitaId": 1
+    },
+    {
+        "Id": 9,
+        "UsuarioId": 9,
+        "ReceitaId": 1
+    },
+    {
+        "Id": 10,
+        "UsuarioId": 10,
+        "ReceitaId": 1
+    },
+    {
+        "Id": 11,
+        "UsuarioId": 1,
+        "ReceitaId": 6
+    },
+    {
+        "Id": 12,
+        "UsuarioId": 2,
+        "ReceitaId": 6
+    },
+    {
+        "Id": 13,
+        "UsuarioId": 3,
+        "ReceitaId": 6
+    },
+    {
+        "Id": 14,
+        "UsuarioId": 4,
+        "ReceitaId": 6
+    },
+    {
+        "Id": 15,
+        "UsuarioId": 5,
+        "ReceitaId": 6
+    },
+    {
+        "Id": 16,
+        "UsuarioId": 6,
+        "ReceitaId": 6
+    },
+    {
+        "Id": 17,
+        "UsuarioId": 7,
+        "ReceitaId": 7
+    },
+    {
+        "Id": 18,
+        "UsuarioId": 1,
+        "ReceitaId": 7
+    },
+    {
+        "Id": 19,
+        "UsuarioId": 2,
+        "ReceitaId": 7
+    },
+    {
+        "Id": 20,
+        "UsuarioId": 3,
+        "ReceitaId": 7
+    },
+    {
+        "Id": 21,
+        "UsuarioId": 4,
+        "ReceitaId": 7
+    },
+    {
+        "Id": 22,
+        "UsuarioId": 5,
+        "ReceitaId": 7
+    },
+    {
+        "Id": 23,
+        "UsuarioId": 6,
+        "ReceitaId": 7
+    },
+    {
+        "Id": 24,
+        "UsuarioId": 7,
+        "ReceitaId": 7
+    },
+    {
+        "Id": 25,
+        "UsuarioId": 8,
+        "ReceitaId": 7
+    },
+    {
+        "Id": 26,
+        "UsuarioId": 9,
+        "ReceitaId": 7
+    },
+    {
+        "Id": 27,
+        "UsuarioId": 10,
+        "ReceitaId": 7
+    },
+    {
+        "Id": 28,
+        "UsuarioId": 1,
+        "ReceitaId": 8
+    },
+    {
+        "Id": 29,
+        "UsuarioId": 2,
+        "ReceitaId": 8
+    },
+    {
+        "Id": 30,
+        "UsuarioId": 3,
+        "ReceitaId": 8
+    },
+    {
+        "Id": 31,
+        "UsuarioId": 4,
+        "ReceitaId": 8
+    },
+    {
+        "Id": 32,
+        "UsuarioId": 5,
+        "ReceitaId": 8
+    },
+    {
+        "Id": 33,
+        "UsuarioId": 6,
+        "ReceitaId": 8
+    },
+    {
+        "Id": 34,
+        "UsuarioId": 7,
+        "ReceitaId": 8
+    },
+    {
+        "Id": 35,
+        "UsuarioId": 8,
+        "ReceitaId": 8
+    },
+    {
+        "Id": 36,
+        "UsuarioId": 9,
+        "ReceitaId": 8
+    },
+    {
+        "Id": 37,
+        "UsuarioId": 10,
+        "ReceitaId": 8
+    },
+    {
+        "Id": 38,
+        "UsuarioId": 1,
+        "ReceitaId": 9
+    },
+    {
+        "Id": 39,
+        "UsuarioId": 2,
+        "ReceitaId": 9
+    },
+    {
+        "Id": 40,
+        "UsuarioId": 3,
+        "ReceitaId": 9
+    }
+]

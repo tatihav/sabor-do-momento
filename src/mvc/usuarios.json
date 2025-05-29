@@ -1,0 +1,72 @@
+﻿[
+    {
+        "Id": 1,
+        "Nome": "Maria Souza",
+        "Email": "usuario1@gmail.com",
+        "Senha": "12345678",
+        "UrlFoto": "https://randomuser.me/api/portraits/women/2.jpg"
+    },
+    {
+        "Id": 2,
+        "Nome": "Bruna Mendes",
+        "Email": "usuario2@gmail.com",
+        "Senha": "12345678",
+        "UrlFoto": "https://randomuser.me/api/portraits/women/6.jpg"
+    },
+    {
+        "Id": 3,
+        "Nome": "Roberta Carvalho",
+        "Email": "usuario3@gmail.com",
+        "Senha": "12345678",
+        "UrlFoto": "https://randomuser.me/api/portraits/women/10.jpg"
+    },
+    {
+        "Id": 4,
+        "Nome": "Marcelo Gomes",
+        "Email": "usuario4@gmail.com",
+        "Senha": "12345678",
+        "UrlFoto": "https://randomuser.me/api/portraits/men/13.jpg"
+    },
+    {
+        "Id": 5,
+        "Nome": "Patrícia Almeida",
+        "Email": "usuario5@gmail.com",
+        "Senha": "12345678",
+        "UrlFoto": "https://randomuser.me/api/portraits/women/15.jpg"
+    },
+    {
+        "Id": 6,
+        "Nome": "Débora Vieira",
+        "Email": "usuario6@gmail.com",
+        "Senha": "12345678",
+        "UrlFoto": "https://randomuser.me/api/portraits/women/17.jpg"
+    },
+    {
+        "Id": 7,
+        "Nome": "Gustavo Lopes",
+        "Email": "usuario7@gmail.com",
+        "Senha": "12345678",
+        "UrlFoto": "https://randomuser.me/api/portraits/men/19.jpg"
+    },
+    {
+        "Id": 8,
+        "Nome": "João Lima",
+        "Email": "usuario8@gmail.com",
+        "Senha": "12345678",
+        "UrlFoto": "https://randomuser.me/api/portraits/men/22.jpg"
+    },
+    {
+        "Id": 9,
+        "Nome": "Carlos Moreira",
+        "Email": "usuario9@gmail.com",
+        "Senha": "12345678",
+        "UrlFoto": "https://randomuser.me/api/portraits/men/26.jpg"
+    },
+    {
+        "Id": 10,
+        "Nome": "André Gomes",
+        "Email": "usuario10@gmail.com",
+        "Senha": "12345678",
+        "UrlFoto": "https://randomuser.me/api/portraits/men/33.jpg"
+    }
+]

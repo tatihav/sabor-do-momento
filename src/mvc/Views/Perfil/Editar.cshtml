@@ -1,0 +1,33 @@
+﻿@model mvc.Models.Domain.Usuario
+
+@{
+    ViewData["Title"] = "Editar Perfil";
+}
+
+<h2 class="text-center mb-4">Editar Perfil</h2>
+
+<form asp-action="Editar" method="post" enctype="multipart/form-data"> 
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <input type="hidden" asp-for="Email" />
+
+    <label asp-for="Nome"></label>
+    <input asp-for="Nome" class="form-control mb-3" />
+
+    <label asp-for="Email"></label>
+    <input asp-for="Email" class="form-control mb-3" />
+
+    <label asp-for="Senha"></label>
+    <input asp-for="Senha" class="form-control mb-3" type="password" />
+
+    <div class="mb-3">
+        <label class="form-label">Foto de Perfil</label><br />
+        @if (!string.IsNullOrEmpty(Model.UrlFoto))
+        {
+            <img src="~/@Url.Content("~/" + Model.UrlFoto)" alt="Foto atual" style="max-height: 150px;" class="mb-2 d-block" />
+        }
+        <input type="file" name="fotoPerfil" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="MeuPerfil" class="btn btn-secondary">Cancelar</a>
+</form>

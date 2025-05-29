@@ -1,0 +1,27 @@
+﻿
+.container-cadastro {
+    background: linear-gradient(to right, #fbe3a1, #dcae75);
+}
+
+.container-login {
+    background: linear-gradient(to right, #fbe3a1, #dcae75);
+    
+}
+
+.logo-box {
+    width: 300px;
+    background: #dcae75;
+    
+}
+
+.login-card {
+    background-color:  #dcae75;
+    
+    
+    width: 100%;
+    max-width: 400px;
+}
+.cadastro-card {
+    background-color: #dcae75;
+    width: 100%;
+    max-width: 400px;

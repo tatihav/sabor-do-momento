@@ -1,0 +1,41 @@
+﻿@model List<mvc.Models.Domain.Receita>
+
+@{
+    ViewData["Title"] = "Receitas Pendentes";
+}
+
+<h2>Receitas Pendentes para Aprovação</h2>
+
+@if (Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Categoria</th>
+                <th>Usuário</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var receita in Model)
+            {
+                <tr>
+                    <td>@receita.Titulo</td>
+                    <td>@receita.Categoria?.Nome</td>
+                    <td>@receita.Usuario?.Nome</td>
+                    <td>
+                        <a asp-action="Aprovar" asp-route-id="@receita.Id" class="btn btn-success btn-sm">Aprovar</a>
+                        <a asp-action="ExcluirReceita" asp-route-id="@receita.Id" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir?');">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">
+        Não há receitas pendentes no momento.
+    </div>
+}

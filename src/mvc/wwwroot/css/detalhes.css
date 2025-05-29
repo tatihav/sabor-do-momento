@@ -1,0 +1,40 @@
+﻿.text-gradient {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+.hover-scale {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .hover-scale:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
+
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+textarea.form-control {
+    resize: none;
+    padding: 10px 20px;
+}
+
+    textarea.form-control:focus {
+        box-shadow: none;
+        border-color: #ced4da;
+    }
+
+.btn-outline-danger:hover {
+    color: white !important;
+}
+
+.btn-outline-secondary:hover {
+    color: white !important;
+}

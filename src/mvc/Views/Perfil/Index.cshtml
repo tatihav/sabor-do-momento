@@ -1,0 +1,112 @@
+﻿@model mvc.Models.ViewModels.PerfilViewModel
+
+@{
+    ViewData["Title"] = "Meu Perfil";
+}
+
+<link rel="stylesheet" href="~/css/inicio.css" />
+
+@if (TempData["Sucesso"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Sucesso"]
+    </div>
+}
+
+
+<div class="d-flex justify-content-center gap-5 flex-wrap mt-3">
+    <!-- Bloco do perfil -->
+    <div>
+        <h2>Meu Perfil</h2>
+
+        @if (!string.IsNullOrEmpty(Model.Usuario.UrlFoto))
+        {
+            <img src="~/@(string.IsNullOrEmpty(Model.Usuario.UrlFoto) ? "img/perfil/foto_perfil.png" : Model.Usuario.UrlFoto)"
+                 alt="Foto de perfil"
+                 style="height: 180px; width: 180px; object-fit: cover;" class="rounded-circle  shadow-lg mb-4" />
+        }
+
+        <p><strong>Nome:</strong> @Model.Usuario.Nome</p>
+        <p><strong>Email:</strong> @Model.Usuario.Email</p>
+
+        <a class="btn btn-outline-primary mb-1" asp-controller="Perfil" asp-action="Editar" asp-route-id="@Model.Usuario.Id">Editar Perfil</a>
+        <a asp-action="Detalhes" asp-route-id="@Model.Usuario.Id" class="btn btn-outline-info mb-1">Ver detalhes</a>
+        <a asp-action="Excluir" asp-route-id="@Model.Usuario.Id" class="btn btn-danger mb-1">Excluir Perfil</a>
+    </div>
+
+    <!-- Botão Postar Receita -->
+    <div class="bg-light rounded p-4 shadow text-center" style="width: 200px; height: 150px;">
+        <img src="~/img/nova_receita.png" alt="Ícone Nova Receita" style="width: 50px;" class="mb-3" />
+        <a asp-controller="Receita" asp-action="Nova" class="btn btn-dark w-100 rounded-pill">Postar Receita</a>
+    </div>
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="bg-light rounded p-4 shadow text-center" style="width: 200px; height: 150px;">
+            <img src="~/img/pendente.png" alt="Ícone Receitas Pendentes" style="width: 50px;" class="mb-3" />
+            <a asp-action="ReceitasPendentes" class="btn btn-danger w-100 rounded-pill">Aprovar Receitas</a>
+        </div>
+    }
+</div>
+
+
+
+
+<!-- Preferências + Receitas Salvas -->
+<div class="d-flex justify-content-center gap-5 mt-4 flex-wrap">
+    <!-- Preferências -->
+    <div class="card filter-card" style="width: 250px;">
+        <div class="card-header bg-light">
+            <h5 class="mb-0">Preferências</h5>
+        </div>
+        <div class="card-body">
+            <div class="filter-section">
+                <div class="filter-header" onclick="toggleSection('categorias')">
+                    <h6 class="fw-bold">Categorias</h6>
+                    <span class="toggle-icon">▲</span>
+                </div>
+                <ul class="list-group filter-list" id="categorias-list">
+                    @foreach (var categoria in Model.Categorias)
+                    {
+                        <li class="filter-item">
+                            <a asp-controller="Home" asp-action="Inicio" asp-route-categoriaId="@categoria.Id">
+                                @categoria.Nome
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Receitas Salvas -->
+    <div class="bg-light rounded shadow p-4" style="min-width: 400px;">
+        <h5 class="text-center mb-3">Suas Receitas Salvas</h5>
+        <hr />
+        @if (Model.ReceitasSalvas != null && Model.ReceitasSalvas.Any())
+        {
+            @foreach (var receita in Model.ReceitasSalvas)
+            {
+                <div class="mb-3 border-bottom pb-2">
+                    <strong>@receita.Titulo</strong><br />
+                    <span class="text-muted">Por @receita.Usuario.Nome</span><br />
+                    <a asp-controller="Receita" asp-action="Detalhes" asp-route-id="@receita.Id" class="btn btn-sm btn-outline-primary mt-1">Ver Receita</a>
+                </div>
+            }
+        }
+        else
+        {
+            <p>Você ainda não salvou nenhuma receita.</p>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function toggleSection(sectionId) {
+            const list = document.getElementById(`${sectionId}-list`);
+            const icon = document.querySelector(`#${sectionId}-list`).previousElementSibling.querySelector('.toggle-icon');
+            list.classList.toggle('collapsed');
+            icon.textContent = list.classList.contains('collapsed') ? '▼' : '▲';
+        }
+    </script>
+}

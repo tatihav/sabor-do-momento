@@ -1,0 +1,112 @@
+﻿[
+    {
+        "Id": 1,
+        "Titulo": "Bolo de Cenoura",
+        "Ingredientes": "3 cenouras médias, 4 ovos, 1 xícara de óleo, 2 xícaras de açúcar, 2 xícaras de farinha de trigo, 1 colher de sopa de fermento em pó",
+        "ModoPreparo": "Bata no liquidificador as cenouras, ovos e óleo. Misture o açúcar, a farinha e o fermento em uma tigela e adicione à mistura do liquidificador. Asse em forno pré-aquecido a 180°C por 40 minutos.",
+        "Aprovada": true,
+        "UrlFoto": "https://abiad.org.br/2021/wp-content/uploads/2020/09/bolocenoura_xilitol_igorrocha.jpg",
+        "TempoPreparo": 30,
+        "UsuarioId": 1,
+        "CategoriaId": 5
+    },
+    {
+        "Id": 2,
+        "Titulo": "Lasanha de Carne",
+        "Ingredientes": "500g de carne moída, 1 pacote de massa para lasanha, 500g de queijo mussarela, 500g de presunto, 1 lata de molho de tomate, 2 colheres de sopa de óleo, Sal e pimenta a gosto",
+        "ModoPreparo": "Refogue a carne com óleo, sal e pimenta. Adicione o molho de tomate. Em uma travessa, alterne camadas de massa, carne, presunto e queijo. Finalize com queijo. Asse por 30 minutos a 180°C.",
+        "Aprovada": true,
+        "UrlFoto": "https://p2.trrsf.com/image/fget/cf/1200/1600/middle/images.terra.com/2022/01/20/1189747356-lasanha-escondidinho-carne-moida-768x512.jpg",
+        "TempoPreparo": 20,
+        "UsuarioId": 2,
+        "CategoriaId": 2
+    },
+    {
+        "Id": 3,
+        "Titulo": "Torta de Limão",
+        "Ingredientes": "1 pacote de biscoito maisena, 100g de manteiga, 1 lata de leite condensado, Suco de 2 limões, Raspas de limão, 3 claras, 3 colheres de açúcar",
+        "ModoPreparo": "Misture o biscoito triturado com a manteiga derretida e forre uma forma. Bata o leite condensado com o suco de limão e despeje sobre a massa. Faça o merengue com as claras e açúcar e cubra a torta. Asse por 10 minutos até dourar.",
+        "Aprovada": true,
+        "UrlFoto": "https://www.mococa.com.br/wp-content/uploads/2022/07/Torta-de-limao_6-scaled.jpg",
+        "TempoPreparo": 40,
+        "UsuarioId": 3,
+        "CategoriaId": 4
+    },
+    {
+        "Id": 4,
+        "Titulo": "Feijoada",
+        "Ingredientes": "500g de feijão preto, 300g de carne seca, 200g de linguiça calabresa, 200g de paio, 1 cebola picada, 2 dentes de alho, Sal e pimenta a gosto",
+        "ModoPreparo": "Deixe o feijão de molho. Cozinhe as carnes separadamente e depois misture ao feijão. Adicione a cebola e o alho refogados. Cozinhe até o feijão estar macio.",
+        "Aprovada": true,
+        "UrlFoto": "https://static.itdg.com.br/images/1200-630/7a1c975ecbe125ad44416e5611a15569/352595-original.jpg",
+        "TempoPreparo": 30,
+        "UsuarioId": 4,
+        "CategoriaId": 3
+    },
+    {
+        "Id": 5,
+        "Titulo": "Salada Caesar",
+        "Ingredientes": "1 pé de alface romana, 100g de queijo parmesão, 100g de croutons, 2 filés de peito de frango, Molho Caesar (à base de maionese, parmesão, limão e alho)",
+        "ModoPreparo": "Grelhe o frango e fatie. Monte a salada com alface, frango, parmesão e croutons. Regue com o molho Caesar.",
+        "Aprovada": true,
+        "UrlFoto": "https://d1uz88p17r663j.cloudfront.net/original/82ddb6cea5bc7d60f39e3efadb89dab6_salada-cesar-receitas-nestle.jpg",
+        "TempoPreparo": 10,
+        "UsuarioId": 5,
+        "CategoriaId": 2
+    },
+    {
+        "Id": 6,
+        "Titulo": "Frango à Parmegiana",
+        "Ingredientes": "2 peitos de frango, 2 ovos, Farinha de trigo para empanar, Farinha de rosca para empanar, Molho de tomate, 200g de queijo mussarela, Sal e pimenta a gosto",
+        "ModoPreparo": "Tempere os peitos de frango com sal e pimenta, passe na farinha de trigo, nos ovos batidos e na farinha de rosca. Frite até dourar. Coloque o molho de tomate e queijo por cima e leve ao forno até derreter o queijo.",
+        "Aprovada": true,
+        "UrlFoto": "https://p2.trrsf.com/image/fget/cf/1200/1600/middle/images.terra.com/2024/01/28/1237455610-file-de-frango-a-parmegiana-sem-fritar-ca48iw6c.jpg",
+        "TempoPreparo": 30,
+        "UsuarioId": 6,
+        "CategoriaId": 3
+    },
+    {
+        "Id": 7,
+        "Titulo": "Moqueca de Peixe",
+        "Ingredientes": "1 kg de filé de peixe (pescada, robalo ou outro), 1 cebola grande, 1 pimentão vermelho, 1 pimentão verde, 2 tomates, 200ml de leite de coco, Azeite de dendê, Coentro a gosto, Sal e pimenta a gosto",
+        "ModoPreparo": "Tempere os filés de peixe com sal e pimenta. Em uma panela, refogue a cebola, os pimentões e os tomates. Adicione o leite de coco e o azeite de dendê. Cozinhe o peixe por cerca de 20 minutos. Finalize com coentro.",
+        "Aprovada": true,
+        "UrlFoto": "https://www.receiteria.com.br/wp-content/uploads/moqueca-de-pintado-00.jpg",
+        "TempoPreparo": 20,
+        "UsuarioId": 7,
+        "CategoriaId": 2
+    },
+    {
+        "Id": 8,
+        "Titulo": "Coxinha de Frango",
+        "Ingredientes": "1 peito de frango desfiado, 1 cebola picada, 2 dentes de alho, 1 colher de sopa de azeite, 2 colheres de sopa de farinha de trigo, 1 copo de caldo de frango, Farinha de rosca para empanar, Óleo para fritar",
+        "ModoPreparo": "Refogue o frango com cebola, alho e azeite. Adicione a farinha e o caldo de frango até formar uma massa. Modele as coxinhas, empane na farinha de rosca e frite em óleo quente até dourar.",
+        "Aprovada": true,
+        "UrlFoto": "https://static.itdg.com.br/images/1200-675/1dc3e596953e0d2e6bfff1b90fbcbb29/118911-original.jpg",
+        "TempoPreparo": 45,
+        "UsuarioId": 8,
+        "CategoriaId": 5
+    },
+    {
+        "Id": 9,
+        "Titulo": "Brigadeiro",
+        "Ingredientes": "1 lata de leite condensado, 2 colheres de sopa de chocolate em pó, 1 colher de sopa de manteiga, Chocolate granulado para decorar",
+        "ModoPreparo": "Em uma panela, misture o leite condensado, o chocolate em pó e a manteiga. Cozinhe em fogo baixo até desgrudar do fundo da panela. Deixe esfriar, faça bolinhas e passe no granulado.",
+        "Aprovada": true,
+        "UrlFoto": "https://www.conqualita.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/b/r/brigadeiro_2.jpg",
+        "TempoPreparo": 10,
+        "UsuarioId": 9,
+        "CategoriaId": 4
+    },
+    {
+        "Id": 10,
+        "Titulo": "Panqueca Americana",
+        "Ingredientes": "1 xícara de farinha de trigo, 1 colher de sopa de açúcar, 1 colher de chá de fermento em pó, 1 xícara de leite, 1 ovo, 1 colher de sopa de manteiga derretida",
+        "ModoPreparo": "Misture todos os ingredientes em uma tigela até obter uma massa homogênea. Aqueça uma frigideira e coloque uma porção da massa. Cozinhe até formar bolhas e vire. Sirva com mel ou frutas.",
+        "Aprovada": true,
+        "UrlFoto": "https://conteudo.imguol.com.br/c/entretenimento/8f/2020/06/05/panqueca-americana-com-frutas-vermelhas-1591366485086_v2_1280x1920.jpg",
+        "TempoPreparo": 15,
+        "UsuarioId": 10,
+        "CategoriaId": 1
+    }
+]

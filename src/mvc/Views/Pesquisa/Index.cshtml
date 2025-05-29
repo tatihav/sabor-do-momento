@@ -1,0 +1,37 @@
+﻿@model mvc.Models.ViewModels.PesquisaViewModel
+
+<div class="container">
+
+    <!-- Mensagem quando não há resultados -->
+    @if (!Model.Receitas.Any())
+    {
+        <div class="alert alert-info mt-4">
+            @if (string.IsNullOrEmpty(ViewBag.TermoPesquisa))
+            {
+                <span>Digite um termo para pesquisar receitas.</span>
+            }
+            else
+            {
+                <span>Nenhuma receita encontrada para: <strong>"@ViewBag.TermoPesquisa"</strong>. Tente usar palavras diferentes.</span>
+            }
+        </div>
+    }
+
+    <div class="receitas-container">
+        @foreach (var receita in Model.Receitas)
+        {
+            <div class="receita-card">
+                <a asp-controller="Receita" asp-action="Detalhes" asp-route-id="@receita.Id" asp-route-idCategoria="@receita.CategoriaId" class="receita-link">
+                    <img src="@receita.UrlFoto" alt="@receita.Titulo" class="receita-imagem">
+                </a>
+                <h3 class="receita-titulo">@receita.Titulo</h3>
+                <div class="receita-meta">
+                    <div class="usuario-info">
+                        <img src="@receita.FotoUsuario" alt="@receita.NomeUsuario" class="usuario-avatar">
+                        <span class="usuario-nome">Por @receita.NomeUsuario</span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

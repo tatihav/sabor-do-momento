@@ -1,0 +1,17 @@
+﻿@model mvc.Models.Domain.Usuario
+
+<h2>Confirmar Exclusão</h2>
+
+<p>Tem certeza que deseja excluir este usuário?</p>
+
+<ul>
+    <li><strong>Nome:</strong> @Model.Nome</li>
+    <li><strong>Email:</strong> @Model.Email</li>
+    <li><strong>Perfil:</strong> @Model.Perfil</li>
+</ul>
+
+<form asp-action="Excluir" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

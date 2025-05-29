@@ -1,0 +1,52 @@
+﻿[
+    {
+        "Id": 1,
+        "TagId": 7,
+        "ReceitaId": 1
+    },
+    {
+        "Id": 2,
+        "TagId": 10,
+        "ReceitaId": 1
+    },
+    {
+        "Id": 3,
+        "TagId": 7,
+        "ReceitaId": 2
+    },
+    {
+        "Id": 4,
+        "TagId": 11,
+        "ReceitaId": 2
+    },
+    {
+        "Id": 5,
+        "TagId": 4,
+        "ReceitaId": 3
+    },
+    {
+        "Id": 6,
+        "TagId": 7,
+        "ReceitaId": 4
+    },
+    {
+        "Id": 7,
+        "TagId": 9,
+        "ReceitaId": 5
+    },
+    {
+        "Id": 8,
+        "TagId": 2,
+        "ReceitaId": 5
+    },
+    {
+        "Id": 9,
+        "TagId": 7,
+        "ReceitaId": 6
+    },
+    {
+        "Id": 10,
+        "TagId": 10,
+        "ReceitaId": 10
+    }
+]

@@ -1,0 +1,174 @@
+﻿@model mvc.Models.ViewModels.ReceitaViewModel
+@Html.AntiForgeryToken()
+
+<div class="container py-4">
+    <!-- Título principal da receita -->
+    <h1 class="text-center mb-4 fw-bold text-uppercase">@Model.ReceitaTitulo</h1>
+
+    <div class="row">
+        <!-- Coluna principal -->
+        <div class="col-lg-8">
+            <!-- Imagem principal da receita -->
+            <img src="@(string.IsNullOrEmpty(Model.ReceitaFoto)
+    ? Url.Content("~/img/sem-imagem.png")
+    : (Model.ReceitaFoto.StartsWith("http")
+        ? Model.ReceitaFoto
+        : Url.Content("~/" + Model.ReceitaFoto)))"
+                 alt="Foto da receita: @Model.ReceitaTitulo"
+                 class="img-fluid rounded shadow-sm mb-4"
+                 style="width: 100%; object-fit: cover; max-height: 500px;">
+
+            <!-- Autor e curtidas -->
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+                <div class="d-flex align-items-center">
+
+                    <img src="@(Model.UsuarioFoto.StartsWith("http")
+              ? Model.UsuarioFoto
+              : Url.Content("~/" + Model.UsuarioFoto))"
+                         alt="Foto de @Model.UsuarioNome"
+                         class="rounded-circle me-2"
+                         style="width: 40px; height: 40px; object-fit: cover; border: 2px solid #f8f8f8;">
+                    <span class="text-muted fst-italic">Por @Model.UsuarioNome</span>
+                </div>
+                <button type="button" class="btn btn-outline-danger" onclick="curtirReceita(@Model.ReceitaId)">
+                    ❤️ <span id="contador-curtidas">@Model.Curtidas</span>
+                </button>
+                <a href="https://wa.me/?text=@Uri.EscapeDataString("Veja essa receita: " + Model.ReceitaTitulo + " - " + Context.Request.Scheme + "://" + Context.Request.Host + Url.Action("Detalhes", "Receita", new { id = Model.ReceitaId, idCategoria = Model.CategoriaId }))"
+                   target="_blank" title="Compartilhar no WhatsApp">
+                    <img src="~/img/whatsapp.svg" alt="Compartilhar no WhatsApp" style="width: 32px; height: 32px;">
+                </a>
+
+
+            </div>
+
+            
+            
+            <!-- Ingredientes -->
+            <section class="mb-4" aria-label="Lista de ingredientes">
+                <h2 class="border-bottom pb-2 mb-3">Ingredientes</h2>
+                <ul class="list-unstyled">
+                    @foreach (var ingrediente in Model.Ingredientes.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        <li class="py-2 border-bottom d-flex align-items-center">
+                            <span class="me-2 text-muted">•</span>
+                            <span>@ingrediente.Trim()</span>
+                        </li>
+                    }
+                </ul>
+            </section>
+
+            <!-- Modo de preparo -->
+            <section class="mb-4" aria-label="Modo de preparo">
+                <h2 class="border-bottom pb-2 mb-3">Modo de Preparo</h2>
+                <div class="mb-3">
+                    <span class="text-muted">⏱️ @Model.TempoPreparo minutos</span>
+                </div>
+                <div class="lh-lg">
+                    @Html.Raw(Model.ModoPreparo.Replace("\n", "<br />"))
+                </div>
+            </section>
+            <!-- Tags -->
+            @if (Model.Tags != null && Model.Tags.Any())
+            {
+                <section class="mb-4" aria-label="Tags da receita">
+                    <h2 class="border-bottom pb-2 mb-3">Tags</h2>
+                    <div class="d-flex flex-wrap gap-2">
+                        @foreach (var tag in Model.Tags)
+                        {
+                            <span class="badge bg-secondary">@tag.Nome</span>
+                        }
+                    </div>
+                </section>
+            }
+            <!-- Comentários -->
+            <section class="mt-5" aria-label="Seção de comentários">
+                <h2 class="border-bottom pb-2 mb-3">Comentários (@Model.Comentarios.Count)</h2>
+
+                @if (Model.Comentarios.Any())
+                {
+                    <div class="comments-list">
+                        @foreach (var comentario in Model.Comentarios)
+                        {
+                            <article class="card mb-3">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <img src="@comentario.Usuario.UrlFoto" alt="Foto de @comentario.Usuario.Nome" class="rounded-circle me-2" style="width: 40px; height: 40px; object-fit: cover;">
+                                        <span class="fw-bold">@comentario.Usuario.Nome</span>
+                                    </div>
+                                    <p class="card-text">@comentario.TextoComentario</p>
+                                </div>
+                            </article>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p class="text-center text-muted fst-italic py-4">Nenhum comentário ainda. Seja o primeiro a comentar!</p>
+                }
+            </section>
+        </div>
+    
+        
+
+        <!-- Coluna lateral -->
+        <aside class="col-lg-4">
+            <div class="sticky-top" style="top: 20px;">
+                <h2 class="border-bottom pb-2 mb-3">RECOMENDADAS</h2>
+                <div class="d-flex flex-column gap-4">
+                    @foreach (var receita in Model.ReceitasRecomendadas)
+                    {
+                        <div class="receita-card">
+                            <a asp-controller="Receita" asp-action="Detalhes" asp-route-id="@receita.Id" asp-route-idCategoria="@receita.CategoriaId" class="receita-link">
+                                <img src="@(string.IsNullOrEmpty(receita.UrlFoto)
+    ? Url.Content("~/img/sem-imagem.png")
+    : (receita.UrlFoto.StartsWith("http")
+        ? receita.UrlFoto
+        : Url.Content("~/" + receita.UrlFoto)))"
+                                     alt="@receita.Titulo"
+                                     class="receita-imagem" />
+                            </a>
+                            <h3 class="receita-titulo">@receita.Titulo</h3>
+                            <div class="receita-meta">
+                                <div class="usuario-info">
+                                    <img src="@(string.IsNullOrEmpty(receita.FotoUsuario)
+    ? Url.Content("~/img/sem-imagem.png")
+    : (receita.FotoUsuario.StartsWith("http")
+        ? receita.FotoUsuario
+        : Url.Content("~/" + receita.FotoUsuario)))"
+                                         alt="Foto de @receita.NomeUsuario"
+                                         class="usuario-avatar" />
+                                    <span class="usuario-nome">Por @receita.NomeUsuario</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </aside>
+    </div>
+    </div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+                        function curtirReceita(id) {
+            fetch('/Receita/CurtirAjax', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                },
+                body: JSON.stringify({ id: id })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.sucesso) {
+                    document.getElementById('contador-curtidas').innerText = data.curtidas;
+                } else {
+                    alert(data.mensagem);
+                }
+            });
+        }
+
+    </script>
+}

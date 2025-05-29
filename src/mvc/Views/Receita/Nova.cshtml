@@ -1,0 +1,111 @@
+﻿@model mvc.Models.ViewModels.NovaReceitaViewModel
+
+<div class="container mt-4">
+    <div class="row justify-content-start">
+        <div class="col-md-8 col-lg-7">
+            <form asp-action="Nova" method="post" enctype="multipart/form-data">
+                <h2 class="text-center mb-4">ADICIONAR NOVA RECEITA</h2>
+
+                <div class="mb-3">
+                    <label asp-for="Titulo" class="form-label"></label>
+                    <input asp-for="Titulo" class="form-control" placeholder="Digite o nome da receita" />
+                    <span asp-validation-for="Titulo" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Foto" class="form-label"></label>
+                    <input asp-for="Foto" class="form-control" type="file" />
+                    <span asp-validation-for="Foto" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ingredientes</label>
+                    <div id="ingredientes-list">
+                        <div class="d-flex mb-2">
+                        <input type="text" id="ingrediente-input" class="form-control me-2" placeholder="Digite um ingrediente" />
+                        <button type="button" class="btn btn-dark" onclick="adicionarIngrediente()">Adicionar</button>
+                    </div>
+                   
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Modopreparo" class="form-label"></label>
+                    <textarea asp-for="Modopreparo" class="form-control" rows="5" placeholder="Descreva o modo de preparo..."></textarea>
+                    <span asp-validation-for="Modopreparo" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Selecione a Categoria</label>
+                    <div class="d-flex flex-wrap gap-2">
+                        @foreach (var categoria in Model.Categorias)
+                        {
+                            <input type="radio"
+                                   name="CategoriaId"
+                                   id="cat@(categoria.Id)"
+                                   value="@categoria.Id"
+                            @(Model.CategoriaId == categoria.Id ? "checked" : "") />
+                            <label class="custom-radio" for="cat@(categoria.Id)">
+                                @categoria.Nome
+                            </label>
+                        }
+                    </div>
+                    <span asp-validation-for="CategoriaId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Adicione Tags</label>
+                    <div class="d-flex flex-wrap gap-2">
+                        @foreach (var tag in Model.Tags)
+                        {
+                            <input type="checkbox"
+                                   name="TagIds[]"
+                                   id="tag@(tag.Id)"
+                                   value="@tag.Id"
+                            @(Model.TagIds != null && Model.TagIds.Contains(tag.Id) ? "checked" : "") />
+                            <label class="custom-checkbox" for="tag@(tag.Id)">
+                                @tag.Nome
+                            </label>
+                        }
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Cadastrar Receita</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function adicionarIngrediente() {
+            const input = document.getElementById('ingrediente-input');
+            const valor = input.value.trim();
+
+            if (valor === '') return;
+
+            const container = document.getElementById('ingredientes-list');
+
+            const div = document.createElement('div');
+            div.className = 'd-flex mb-2';
+
+            div.innerHTML = `
+                <input type="text" name="Ingredientes[]" class="form-control me-2" value="${valor}" readonly />
+                <button type="button" class="btn btn-danger" onclick="removerIngrediente(this)">Remover</button>
+            `;
+
+            container.appendChild(div);
+
+            input.value = '';
+        }
+
+        function removerIngrediente(button) {
+            button.parentElement.remove();
+        }
+    </script>
+
+}

@@ -1,0 +1,62 @@
+﻿[
+    {
+        "Id": 1,
+        "TextoComentario": "Muito bom",
+        "ReceitaId": 1,
+        "UsuarioId": 1
+    },
+    {
+        "Id": 2,
+        "TextoComentario": "Receita top, eu adorei",
+        "ReceitaId": 1,
+        "UsuarioId": 2
+    },
+    {
+        "Id": 3,
+        "TextoComentario": "pessoal aqui em casa amou",
+        "ReceitaId": 1,
+        "UsuarioId": 3
+    },
+    {
+        "Id": 4,
+        "TextoComentario": "essa é a minha receita favorita",
+        "ReceitaId": 2,
+        "UsuarioId": 4
+    },
+    {
+        "Id": 5,
+        "TextoComentario": "top",
+        "ReceitaId": 2,
+        "UsuarioId": 5
+    },
+    {
+        "Id": 6,
+        "TextoComentario": "recomendo, podem fazer",
+        "ReceitaId": 2,
+        "UsuarioId": 6
+    },
+    {
+        "Id": 7,
+        "TextoComentario": "excelente",
+        "ReceitaId": 2,
+        "UsuarioId": 7
+    },
+    {
+        "Id": 8,
+        "TextoComentario": "recomendo",
+        "ReceitaId": 2,
+        "UsuarioId": 8
+    },
+    {
+        "Id": 9,
+        "TextoComentario": "receita muito boa",
+        "ReceitaId": 1,
+        "UsuarioId": 9
+    },
+    {
+        "Id": 10,
+        "TextoComentario": "a minha favorita",
+        "ReceitaId": 3,
+        "UsuarioId": 10
+    }
+]

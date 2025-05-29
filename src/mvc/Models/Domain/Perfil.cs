@@ -1,0 +1,3 @@
+﻿namespace mvc.Models.Domain
+{
+}

@@ -1,0 +1,46 @@
+﻿[
+    {
+        "Id": 1,
+        "Nome": "Vegana"
+    },
+    {
+        "Id": 2,
+        "Nome": "Fitness"
+    },
+    {
+        "Id": 3,
+        "Nome": "LowCarb"
+    },
+    {
+        "Id": 4,
+        "Nome": "Natural"
+    },
+    {
+        "Id": 5,
+        "Nome": "Sem Glúten"
+    },
+    {
+        "Id": 6,
+        "Nome": "Vegetariana"
+    },
+    {
+        "Id": 7,
+        "Nome": "Tradicional"
+    },
+    {
+        "Id": 8,
+        "Nome": "Sem Lactose"
+    },
+    {
+        "Id": 9,
+        "Nome": "Nutritivo"
+    },
+    {
+        "Id": 10,
+        "Nome": "Fácil"
+    },
+    {
+        "Id": 11,
+        "Nome": "Rápido"
+    }
+]

@@ -1,0 +1,34 @@
+﻿@model mvc.Models.ViewModels.CategoriaViewModel
+
+<div class="container">
+
+    <div class="categoria-header">
+        <h1>@Model.NomeCategoria</h1>
+    </div>
+
+    <div class="receitas-container">
+        @foreach (var receita in Model.Receitas)
+        {
+            <div class="receita-card">
+                <a asp-controller="Receita" asp-action="Detalhes" asp-route-id="@receita.Id" asp-route-idCategoria="@receita.CategoriaId" class="receita-link">
+                    <img src="@(string.IsNullOrEmpty(receita.UrlFoto)
+    ? Url.Content("~/img/sem-imagem.png")
+    : (receita.UrlFoto.StartsWith("http")
+        ? receita.UrlFoto
+        : Url.Content("~/" + receita.UrlFoto)))"
+                         alt="@receita.Titulo"
+                         class="receita-imagem" />
+                </a>
+                <h3 class="receita-titulo">@receita.Titulo</h3>
+                <div class="receita-meta">
+                    <div class="usuario-info">
+                        <img src="@(receita.FotoUsuario.StartsWith("http") ? receita.FotoUsuario : Url.Content("~/" + receita.FotoUsuario))"
+                             alt="@receita.NomeUsuario"
+                             class="usuario-avatar">
+                        <span class="usuario-nome">Por @receita.NomeUsuario</span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

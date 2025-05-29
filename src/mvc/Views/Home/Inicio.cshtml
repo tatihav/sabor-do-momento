@@ -1,0 +1,136 @@
+﻿@model mvc.Models.ViewModels.InicioViewModel
+
+<link rel="stylesheet" href="~/css/inicio.css" />
+
+<div class="container">
+    <div class="row">
+        <!-- Filtro lateral -->
+        <div class="col-md-3">
+            <div class="card filter-card mb-4">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">Preferências</h5>
+                </div>
+                <div class="card-body">
+                    <!-- Filtro por Categorias -->
+                    <div class="filter-section">
+                        <div class="filter-header" onclick="toggleSection('categorias')">
+                            <h6>Categorias</h6>
+                            <span class="toggle-icon">▲</span>
+                        </div>
+                        <ul class="list-group filter-list" id="categorias-list">
+                            @foreach (var categoria in Model.Categorias)
+                            {
+                                <li class="filter-item @(Model.CategoriaSelecionada == categoria.Id ? "active" : "")">
+                                    <a asp-action="Inicio"
+                                       asp-route-categoriaId="@categoria.Id"
+                                       asp-route-tagId="@Model.TagSelecionada">
+                                        @categoria.Nome
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- Filtro por Tags -->
+                    <div class="filter-section">
+                        <div class="filter-header" onclick="toggleSection('tags')">
+                            <h6>Tags</h6>
+                            <span class="toggle-icon">▲</span>
+                        </div>
+                        <ul class="list-group filter-list" id="tags-list">
+                            @foreach (var tag in Model.Tags)
+                            {
+                                <li class="filter-item @(Model.TagSelecionada == tag.Id ? "active" : "")">
+                                    <a asp-action="Inicio"
+                                       asp-route-tagId="@tag.Id"
+                                       asp-route-categoriaId="@Model.CategoriaSelecionada">
+                                        @tag.Nome
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- Link para limpar filtros -->
+                    @if (Model.CategoriaSelecionada.HasValue || Model.TagSelecionada.HasValue)
+                    {
+                        <div class="text-center mt-3">
+                            <a asp-action="Inicio" class="btn btn-outline-secondary btn-clear-filters">
+                                Limpar Filtros
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de receitas -->
+        <div class="col-md-9">
+            <div class="categoria-header">
+                <h1>@Model.TituloPagina</h1>
+                @if (Model.CategoriaSelecionada.HasValue)
+                {
+                    <p>Filtrado por categoria: <strong>@Model.Categorias.FirstOrDefault(c => c.Id == Model.CategoriaSelecionada)?.Nome</strong></p>
+                }
+                @if (Model.TagSelecionada.HasValue)
+                {
+                    <p>Filtrado por tag: <strong>@Model.Tags.FirstOrDefault(t => t.Id == Model.TagSelecionada)?.Nome</strong></p>
+                }
+            </div>
+
+            <div class="receitas-container">
+                @if (Model.Receitas.Any())
+                {
+                    @foreach (var receita in Model.Receitas)
+                    {
+                        <a asp-controller="Receita" asp-action="Detalhes" asp-route-id="@receita.Id" asp-route-idCategoria="@receita.CategoriaId" class="receita-link">
+                            <div class="receita-card">
+                                <img src="@(receita.UrlFoto.StartsWith("http") ? receita.UrlFoto : Url.Content("~/" + receita.UrlFoto))" alt="@receita.Titulo" class="receita-imagem">
+                                <h3 class="receita-titulo">@receita.Titulo</h3>
+                                <div class="receita-meta">
+                                    <div class="usuario-info">
+                                        <img src="@(receita.FotoUsuario.StartsWith("http") ? receita.FotoUsuario : Url.Content("~/" + receita.FotoUsuario))" alt="@receita.NomeUsuario" class="usuario-avatar">
+                                        <span class="usuario-nome">Por @receita.NomeUsuario</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-info">
+                        Nenhuma receita encontrada com os filtros selecionados.
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Função para alternar as seções
+        function toggleSection(sectionId) {
+            const list = document.getElementById(`${sectionId}-list`);
+            const icon = document.querySelector(`#${sectionId}-list`).previousElementSibling.querySelector('.toggle-icon');
+
+            list.classList.toggle('collapsed');
+
+            // Alterna entre ▲ e ▼
+            if (list.classList.contains('collapsed')) {
+                icon.textContent = '▼';
+            } else {
+                icon.textContent = '▲';
+            }
+        }
+
+        // Inicializa as seções como expandidas por padrão
+        document.addEventListener('DOMContentLoaded', function() {
+            // Define a altura máxima das listas para a animação
+            document.querySelectorAll('.filter-list').forEach(list => {
+                list.style.maxHeight = list.scrollHeight + 'px';
+            });
+        });
+    </script>
+}
