@@ -86,18 +86,40 @@
         {
             @foreach (var receita in Model.ReceitasSalvas)
             {
-                <div class="mb-3 border-bottom pb-2">
-                    <strong>@receita.Titulo</strong><br />
-                    <span class="text-muted">Por @receita.Usuario.Nome</span><br />
-                    <a asp-controller="Receita" asp-action="Detalhes" asp-route-id="@receita.Id" class="btn btn-sm btn-outline-primary mt-1">Ver Receita</a>
+                <div class="d-flex align-items-center mb-3 border-bottom pb-2">
+                    <img src="@(receita.UrlFoto.StartsWith("http") ? receita.UrlFoto : Url.Content("~/" + receita.UrlFoto))"
+                         alt="@receita.Titulo"
+                         style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px; margin-right: 12px;" />
+
+                    <div class="flex-grow-1">
+                        <strong>@receita.Titulo</strong><br />
+                        <span class="text-muted">Por @receita.Usuario?.Nome </span><br />
+                        <a asp-controller="Receita"
+                           asp-action="Detalhes"
+                           asp-route-id="@receita.Id"
+                           asp-route-idCategoria="@receita.CategoriaId"
+                           class="btn btn-outline-primary btn-sm mt-1">
+                            Ver Receita
+                        </a>
+                    </div>
                 </div>
+                <form method="post" asp-controller="Receita" asp-action="RemoverSalva" onsubmit="return confirm('Deseja remover dos salvos?')" style="display:inline;">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@receita.Id" />
+                    <button type="submit" class="btn btn-outline-danger btn-sm ms-2">
+                        Remover
+                    </button>
+                </form>
             }
+
         }
         else
         {
             <p>Você ainda não salvou nenhuma receita.</p>
         }
+
     </div>
+
 </div>
 
 @section Scripts {

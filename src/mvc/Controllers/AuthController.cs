@@ -42,7 +42,7 @@ namespace mvc.Controllers
         [AllowAnonymous]
         public IActionResult Login()
         {
-            
+
             return View();
         }
         [HttpPost]
@@ -52,13 +52,13 @@ namespace mvc.Controllers
             var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == email && u.Ativo);
 
             if (usuario == null || !BCrypt.Net.BCrypt.Verify(senha, usuario.Senha))
-            
+
             {
                 ViewBag.Erro = "Usuário ou senha inválidos.";
                 return View();
 
             }
-            
+
             var claims = new List<Claim>
 {
     new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString()),
@@ -70,17 +70,17 @@ namespace mvc.Controllers
             var identity = new ClaimsIdentity(claims, "CookieAuth");
             var principal = new ClaimsPrincipal(identity);
             var props = new AuthenticationProperties
-            
-                {
-                    AllowRefresh = true,
-                    ExpiresUtc = DateTime.UtcNow.ToLocalTime().AddHours(8),
-                    IsPersistent = true,
-                };
 
-                await HttpContext.SignInAsync("CookieAuth",principal, props);
-                return RedirectToAction( "MeuPerfil", "Perfil" );
-                    
-            
+            {
+                AllowRefresh = true,
+                ExpiresUtc = DateTime.UtcNow.ToLocalTime().AddHours(8),
+                IsPersistent = true,
+            };
+
+            await HttpContext.SignInAsync("CookieAuth", principal, props);
+            return RedirectToAction("MeuPerfil", "Perfil");
+
+
 
         }
     }

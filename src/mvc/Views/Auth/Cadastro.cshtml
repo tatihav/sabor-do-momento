@@ -5,23 +5,23 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="~/css/auth.css" />
 
-	<div class="container-cadastro d-flex vh-100">
-		<div class="logo-box d-flex align-items-center justify-content-center flex-column">
-			<img src="~/img/logo.png" alt="Logo" class="img-fluid mb-2" style="max-width: 200px;" />
+<div class="container-cadastro d-flex vh-100">
+	<div class="logo-box d-flex align-items-center justify-content-center flex-column">
+		<img src="~/img/logo.png" alt="Logo" class="img-fluid mb-2" style="max-width: 200px;" />
 
-		</div>
-		<div class="form-box d-flex align-items-center justify-content-center flex-grow-1">
-			<div class="cadastro-card p-4 rounded">
-				<h2 class="text-center mb-4">Cadastro</h2>
-				<form method="post">
-					<label for="nome">Nome</label>
-					<input type="text" class="form-control mb-3 bg-light border-0" id="nome" name="Nome" placeholder="Digite seu Nome" />
+	</div>
+	<div class="form-box d-flex align-items-center justify-content-center flex-grow-1">
+		<div class="cadastro-card p-4 rounded">
+			<h2 class="text-center mb-4">Cadastro</h2>
+			<form method="post">
+				<label for="nome">Nome</label>
+				<input type="text" class="form-control mb-3 bg-light border-0" id="nome" name="Nome" placeholder="Digite seu Nome" />
 
-					<label for="email">Email</label>
-					<input type="email" class="form-control mb-3 bg-light border-0" id="email" name="Email" placeholder="Digite seu E-mail" />
+				<label for="email">Email</label>
+				<input type="email" class="form-control mb-3 bg-light border-0" id="email" name="Email" placeholder="Digite seu E-mail" />
 
-					<label for="senha">Senha</label>
-					<input type="password" class="form-control mb-4 bg-light border-0" id="senha" name="Senha" placeholder="Digite sua senha" />
+				<label for="senha">Senha</label>
+				<input type="password" class="form-control mb-4 bg-light border-0" id="senha" name="Senha" placeholder="Digite sua senha" />
 
 				<label for="perfil">Perfil</label>
 				<select id="perfil" name="Perfil" class="form-control mb-3">
@@ -29,17 +29,17 @@
 					<option value="Admin">Administrador</option>
 				</select>
 
-					<button class="btn btn-dark w-100 mb-3" type="submit">Cadastrar</button>
+				<button class="btn btn-dark w-100 mb-3" type="submit">Cadastrar</button>
 
-				</form>
-				<p class="text-nconta">
-					Já tem uma conta? <a asp-action="Login" class="fw-bold">Faça login</a>
-				</p>
-				<a asp-controller="Home" asp-action="Inicio" class="btn btn-outline-dark w-100 mt-2">
-					Continuar sem uma conta
-				</a>
+			</form>
+			<p class="text-nconta">
+				Já tem uma conta? <a asp-action="Login" class="fw-bold">Faça login</a>
+			</p>
+			<a asp-controller="Home" asp-action="Inicio" class="btn btn-outline-dark w-100 mt-2">
+				Continuar sem uma conta
+			</a>
 
 
-			</div>
 		</div>
 	</div>
+</div>

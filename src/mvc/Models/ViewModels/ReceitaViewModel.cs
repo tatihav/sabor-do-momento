@@ -5,7 +5,7 @@ namespace mvc.Models.ViewModels
     public class ReceitaViewModel
     {
         public int ReceitaId { get; set; }
-        public string ReceitaTitulo {  get; set; }
+        public string ReceitaTitulo { get; set; }
         public string ReceitaFoto { get; set; }
         public string UsuarioNome { get; set; }
         public string UsuarioFoto { get; set; }

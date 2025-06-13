@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using mvc.Models;
 using mvc.Models.Domain;
@@ -44,7 +45,7 @@ namespace mvc.Controllers
                 TempoPreparo = receitaPrincipal.TempoPreparo,
                 Ingredientes = receitaPrincipal.Ingredientes,
                 ModoPreparo = receitaPrincipal.ModoPreparo,
-                
+
 
                 // Comentários da receita
                 Comentarios = receitaPrincipal.Comentarios
@@ -83,10 +84,10 @@ namespace mvc.Controllers
                 Categorias = _context.Categorias.ToList(),
                 Tags = _context.Tags.ToList(),
                 CategoriaId = null,
-                TagIds = new List<int>() 
+                TagIds = new List<int>()
             };
             return View(vm);
-            
+
         }
 
         [HttpPost]
@@ -157,9 +158,8 @@ namespace mvc.Controllers
         // curtir receitas
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public JsonResult CurtirAjax([FromBody] int id)
+        public JsonResult CurtirAjax([FromBody] CurtidaRequest request)
         {
-            // Verifica se o usuário está logado
             var usuarioId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             if (usuarioId == null)
             {
@@ -167,42 +167,109 @@ namespace mvc.Controllers
             }
 
             int userId = int.Parse(usuarioId);
+            int receitaId = request.Id;
 
-            // Verifica se a receita existe
-            var receita = _context.Receitas.Include(r => r.Curtidas).FirstOrDefault(r => r.Id == id);
+            var receita = _context.Receitas.Include(r => r.Curtidas).FirstOrDefault(r => r.Id == receitaId);
             if (receita == null)
             {
                 return Json(new { sucesso = false, mensagem = "Receita não encontrada." });
             }
 
-            // Verifica se o usuário já curtiu
-            var curtida = _context.Curtidas.FirstOrDefault(c => c.UsuarioId == userId && c.ReceitaId == id);
+            var curtida = _context.Curtidas.FirstOrDefault(c => c.UsuarioId == userId && c.ReceitaId == receitaId);
 
             if (curtida != null)
             {
-                // Se já curtiu, remove a curtida (toggle)
                 _context.Curtidas.Remove(curtida);
             }
             else
             {
-                // Se não curtiu, adiciona a curtida
                 _context.Curtidas.Add(new Curtida
                 {
                     UsuarioId = userId,
-                    ReceitaId = id
+                    ReceitaId = receitaId
                 });
             }
 
             _context.SaveChanges();
 
-            // Conta total de curtidas após a operação
-            var totalCurtidas = _context.Curtidas.Count(c => c.ReceitaId == id);
+            var totalCurtidas = _context.Curtidas.Count(c => c.ReceitaId == receitaId);
 
             return Json(new { sucesso = true, curtidas = totalCurtidas });
         }
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Salvar(int id)
+        {
+            var usuarioId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (usuarioId == null)
+                return Json(new { success = false, message = "Não autenticado" });
+            int userId = int.Parse(usuarioId);
+            bool jaSalvou = _context.ReceitasSalvas.Any(rs => rs.UsuarioId == userId && rs.ReceitaId == id);
+            if (!jaSalvou)
+            {
+                _context.ReceitasSalvas.Add(new ReceitaSalva
+                {
+                    UsuarioId = userId,
+                    ReceitaId = id
+                });
+                _context.SaveChanges();
+            }
 
 
 
+
+            return Json(new { success = true, message = "Receita salva com sucesso!" });
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult RemoverSalva(int id)
+        {
+            var usuarioId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (usuarioId == null)
+                return RedirectToAction("Login", "Auth");
+
+            int userId = int.Parse(usuarioId);
+
+            var receitaSalva = _context.ReceitasSalvas
+                .FirstOrDefault(rs => rs.UsuarioId == userId && rs.ReceitaId == id);
+
+            if (receitaSalva != null)
+            {
+                _context.ReceitasSalvas.Remove(receitaSalva);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("MeuPerfil", "Perfil");
+        }
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Comentar(int receitaId, string textoComentario)
+        {
+            var usuarioId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (usuarioId == null || string.IsNullOrWhiteSpace(textoComentario))
+                return RedirectToAction("Detalhes", new { id = receitaId });
+
+            var comentario = new Comentario
+            {
+                TextoComentario = textoComentario,
+                ReceitaId = receitaId,
+                UsuarioId = int.Parse(usuarioId)
+            };
+
+            _context.Comentarios.Add(comentario);
+            _context.SaveChanges();
+
+            var categoriaId = _context.Receitas
+    .Where(r => r.Id == receitaId)
+    .Select(r => r.CategoriaId)
+    .FirstOrDefault();
+
+            return RedirectToAction("Detalhes", new { id = receitaId, idCategoria = categoriaId });
+        }
 
 
     }

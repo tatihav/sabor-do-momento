@@ -23,7 +23,7 @@ namespace mvc.Models.Domain
         [DataType(DataType.Password)]
         public string Senha { get; set; }
 
-        public string? UrlFoto { get; set; } 
+        public string? UrlFoto { get; set; }
 
         [Required(ErrorMessage = "Obrigatório informar Perfil!")]
         public Perfil Perfil { get; set; }

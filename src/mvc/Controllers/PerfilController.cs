@@ -11,26 +11,26 @@ using System.Security.Claims;
 
 [Authorize]
 public class PerfilController : Controller
+{
+    private readonly AppDbContext _context;
+
+    public PerfilController(AppDbContext context)
     {
-        private readonly AppDbContext _context;
+        _context = context;
+    }
 
-        public PerfilController(AppDbContext context)
-        {
-            _context = context;
-        }
+    public IActionResult Editar(int id)
+    {
+        var usuario = _context.Usuarios.FirstOrDefault(u => u.Id == id);
+        if (usuario == null) return NotFound();
 
-        public IActionResult Editar(int id)
-        {
-            var usuario = _context.Usuarios.FirstOrDefault(u => u.Id == id);
-            if (usuario == null) return NotFound();
-
-            return View(usuario);
-        }
+        return View(usuario);
+    }
 
     [HttpPost]
     public IActionResult Editar(Usuario usuario, IFormFile fotoPerfil)
     {
-        
+
 
         // Buscar usuário original do banco
         var usuarioDb = _context.Usuarios.FirstOrDefault(u => u.Id == usuario.Id);
@@ -40,7 +40,7 @@ public class PerfilController : Controller
         usuarioDb.Nome = usuario.Nome;
         usuarioDb.Email = usuario.Email;
         if (!string.IsNullOrWhiteSpace(usuario.Senha))
-        usuarioDb.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
+            usuarioDb.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
 
         // Se tiver foto nova, salvar
         if (fotoPerfil != null && fotoPerfil.Length > 0)
@@ -66,7 +66,7 @@ public class PerfilController : Controller
 
     public IActionResult Index()
     {
-        
+
         var email = User.FindFirst(ClaimTypes.Email)?.Value;
         var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == email);
 
@@ -87,7 +87,7 @@ public class PerfilController : Controller
         var usuario = _context.Usuarios.FirstOrDefault(u => u.Id == id);
         if (usuario == null) return NotFound();
 
-        return View(usuario); 
+        return View(usuario);
     }
 
     [HttpPost, ActionName("Excluir")]
@@ -115,9 +115,11 @@ public class PerfilController : Controller
         if (usuario == null) return NotFound();
 
         var receitasSalvas = _context.ReceitasSalvas
-        .Where(rs => rs.UsuarioId == usuario.Id)
-        .Select(rs => rs.Receita)
-        .ToList();
+     .Where(rs => rs.UsuarioId == usuario.Id)
+     .Include(rs => rs.Receita)
+         .ThenInclude(r => r.Usuario)
+     .Select(rs => rs.Receita)
+     .ToList();
 
         var viewModel = new PerfilViewModel
         {
@@ -127,7 +129,7 @@ public class PerfilController : Controller
             ReceitasSalvas = receitasSalvas
         };
 
-        return View("Index", viewModel); 
+        return View("Index", viewModel);
     }
     // Listar receitas pendentes
     [Authorize(Roles = "Admin")]
